@@ -19,18 +19,23 @@ modules:
         - lihaohong/yazi
     install:
       packages:
+        - android-tools
         - bat
         - btop
+        - dconf
         - duf
         - fastfetch
         - gdu
+        - glib2
+        - imv
+        - mediainfo
         - micro
+        - realtime-setup   # `sudo usermod -a -G realtime $(whoami)`
         - starship
-        - ufw
+        - udisks2
+        - xdg-user-dirs
+        - xdg-utils
         - yazi
-    remove:
-      packages:
-        - firewalld
 
   - from-file: ./hyprland-modules.yml
   - from-file: ./dms-modules.yml
