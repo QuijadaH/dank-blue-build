@@ -7,10 +7,8 @@ modules:
     install:
       packages:
         - dms
-        - dms-greeter    # Add this as well: https://danklinux.com/docs/dankgreeter/installation#if-you-installed-the-package-manually
-
-
-  
+        - dms-greeter    
+        
   - type: dnf
     repos:
       copr:
@@ -28,4 +26,4 @@ modules:
 
   - type: script
     snippets:
-      - "dms greeter enable"
+      - "dms greeter enable"    # https://danklinux.com/docs/dankgreeter/installation#if-you-installed-the-package-manually
