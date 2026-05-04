@@ -37,4 +37,8 @@ modules:
       packages:
         - firewalld
 
+  - from-file: ./hyprland-modules.yml
+  - from-file: ./dms-modules.yml
+  - from-file: ./desktop-modules.yml
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
