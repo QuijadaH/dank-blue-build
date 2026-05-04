@@ -5,7 +5,6 @@ modules:
           enable:
             - solopasha/hyprland
       install:
-        install-weak-deps: false
         packages:
         - kitty
         - hyprland
