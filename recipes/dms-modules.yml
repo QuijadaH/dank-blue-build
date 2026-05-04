@@ -4,9 +4,11 @@ modules:
       copr:
         enable:
           - avengemedia/dms
+          - scottames/ghostty
     install:
       packages:
         - dms
         - dms-greeter    # Add this as well: https://danklinux.com/docs/dankgreeter/installation#if-you-installed-the-package-manually
         - cliphist
         - wl-clipboard
+        - ghostty
