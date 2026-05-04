@@ -1,0 +1,9 @@
+modules:
+  - type: dnf
+    repos:
+      - vscode
+    keys:
+      - https://packages.microsoft.com/keys/microsoft.asc
+    install:
+      packages:
+        - code
