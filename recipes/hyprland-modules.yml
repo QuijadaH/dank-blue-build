@@ -11,3 +11,4 @@ modules:
       - hyprland
       - xdg-desktop-portal-hyprland
       - hyprland-qtutils
+      - wev
