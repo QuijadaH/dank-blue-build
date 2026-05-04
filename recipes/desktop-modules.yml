@@ -21,3 +21,29 @@ modules:
         - poppler-glib 
         - udiskie
         - webp-pixbuf-loader
+        
+  - type: default-flatpaks
+    configurations:
+      - notify: true 
+        scope: system
+        repo:
+          title: Flathub (system)
+        install: # system flatpaks we want all users to have and not remove
+          - io.github.kolunmi.Bazaar
+          - io.github.celluloid_player.Celluloid
+          - com.github.wwmm.easyeffects
+          - io.github.getnf.embellish
+          - org.equicord.equibop
+          - org.mozilla.firefox
+          - com.github.tchx84.Flatseal
+          - org.gnome.Loupe
+          - io.github.flattool.Warehouse
+          - com.vysp3r.ProtonPlus
+          - com.github.Matoking.protontricks
+          - com.valvesoftware.Steam
+          - io.podman_desktop.PodmanDesktop
+          - me.iepure.devtoolbox
+          - io.github.DenysMb.Kontainer
+      - scope: user
+        repo:
+          title: Flathub (user)
