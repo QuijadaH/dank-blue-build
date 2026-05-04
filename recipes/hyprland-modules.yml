@@ -8,14 +8,15 @@ modules:
       install-weak-deps: false
       packages:
       - hyprland
+      - hyprland-qtutils
+      - qt5-qtwayland
+      - qt6-qtwayland
+      - xdg-desktop-portal-hyprland
 
   - type: dnf
     install:
       install-weak-deps: false
       packages:
-      - hyprland-qtutils
+      - kanshi
       - kitty
-      - qt5-qtwayland
-      - qt6-qtwayland
       - wev
-      - xdg-desktop-portal-hyprland
