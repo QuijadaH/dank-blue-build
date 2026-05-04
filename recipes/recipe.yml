@@ -30,9 +30,12 @@ modules:
         - imv
         - mediainfo
         - micro
+        - p7zip
+        - p7zip-plugins
         - realtime-setup   # `sudo usermod -a -G realtime $(whoami)`
         - starship
         - udisks2
+        - unrar
         - xdg-user-dirs
         - xdg-utils
         - yazi
