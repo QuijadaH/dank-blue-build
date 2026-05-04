@@ -4,14 +4,25 @@ modules:
       copr:
         enable:
           - avengemedia/dms
-          - scottames/ghostty
     install:
       packages:
         - dms
         - dms-greeter    # Add this as well: https://danklinux.com/docs/dankgreeter/installation#if-you-installed-the-package-manually
+        
+  - type: dnf
+    repos:
+      copr:
+        enable:
+          - scottames/ghostty
+    install:
+      packages:
+        - ghostty
+        
+  - type: dnf
+    install:
+      packages:
         - cliphist
         - wl-clipboard
-        - ghostty
         - power-profiles-daemon    # Add user to group `i2c`
         - i2c-tools
         - ddcutil
