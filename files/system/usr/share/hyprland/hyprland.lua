@@ -1,3 +1,7 @@
+--------------------------
+---- CURRENTLY UNUSED ----
+--------------------------
+
 -- This is an example Hyprland Lua config file.
 -- Refer to the wiki for more information.
 -- https://wiki.hypr.land/Configuring/Start/
@@ -9,18 +13,21 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
+require("~/.config/hypr/dms/colors.conf")
+require("~/.config/hypr/dms/layout.conf")
+require("~/.config/hypr/dms/outputs.conf")
 
 ------------------
 ---- MONITORS ----
 ------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
-hl.monitor({
-    output   = "",
-    mode     = "preferred",
-    position = "auto",
-    scale    = "auto",
-})
+-- hl.monitor({
+--     output   = "",
+--     mode     = "preferred",
+--     position = "auto",
+--     scale    = "auto",
+-- })
 
 
 ---------------------
@@ -28,8 +35,8 @@ hl.monitor({
 ---------------------
 
 -- Set programs that you use
-local terminal    = "kitty"
-local fileManager = "dolphin"
+local terminal    = "ghostty"
+local fileManager = "nemo"
 local menu        = "hyprlauncher"
 
 
@@ -48,6 +55,9 @@ local menu        = "hyprlauncher"
 --   hl.exec_cmd("waybar & hyprpaper & firefox")
 -- end)
 
+hl.on("hyprland.start", function()
+        h1.exec_cmd("bash -c 'wl-paste --watch cliphist store &'")
+    end)
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -58,6 +68,10 @@ local menu        = "hyprlauncher"
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
+h1.env("QT_QPA_PLATFORM", "wayland")
+h1.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
+h1.env("QT_QPA_PLATFORMTHEME", "gtk3")
+h1.env("QT_QPA_PLATFORMTHEME_QT6", "gtk3")
 
 -----------------------
 ----- PERMISSIONS -----
