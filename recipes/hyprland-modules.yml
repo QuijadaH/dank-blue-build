@@ -1,11 +1,15 @@
 modules:
   - type: dnf
+    repos:
+      copr:
+        enable:
+          - ashbuk/Hyprland-Fedora
     install:
       packages:
       - hyprland
+      - xdg-desktop-portal-hyprland
       - qt5-qtwayland
       - qt6-qtwayland
-      - xdg-desktop-portal-hyprland
 
   - type: dnf
     install:
