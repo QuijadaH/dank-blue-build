@@ -3,10 +3,12 @@ modules:
     repos:
       copr:
         enable:
-          - ashbuk/Hyprland-Fedora
+          - lionheartp/Hyprland
     install:
+      install-weak-deps: false
       packages:
       - hyprland
+      - hyprland-guiutils
       - xdg-desktop-portal-hyprland
       - qt5-qtwayland
       - qt6-qtwayland
