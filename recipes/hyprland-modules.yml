@@ -17,8 +17,6 @@ modules:
     install:
       packages:
       - grim
-      - kanshi
-      - kitty
       - slurp
       - wev
       # - xwaylandvideobridge    # https://wiki.hypr.land/Useful-Utilities/Screen-Sharing/#xwayland
