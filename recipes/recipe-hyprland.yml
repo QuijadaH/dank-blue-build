@@ -11,9 +11,7 @@ modules:
   - type: dnf
     install:
       packages:
-        - android-tools
         - dconf
-        - duf
         - fastfetch
         - glib2
         - mediainfo

@@ -2,22 +2,20 @@ modules:
   - type: dnf
     install:
       packages:
+        - desktop-file-utils
         - file-roller
         - firewall-config
         - gparted
         - gvfs
-        - gvfs-afc
-        - gvfs-archive
-        - gvfs-gphoto2
         - libgsf 
         - nemo
         - nemo-extensions
         - nemo-fileroller
         - nemo-preview 
-        - nemo-python
-        - nemo-seahorse 
-        - nemo-terminal
-        - poppler-glib 
+        - poppler-glib
+        - samba-client
+        - shared-mime-info 
+        - tumbler
         - webp-pixbuf-loader
         
   - type: default-flatpaks
