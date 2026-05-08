@@ -9,21 +9,37 @@ image-version: 43
 
 modules:
   - type: dnf
+    repos:
+      copr:
+        enable:
+          - lionheartp/Hyprland
     install:
+      install-weak-deps: false
       packages:
-        - dconf
-        - fastfetch
-        - glib2
-        - mediainfo
-        - p7zip
-        - p7zip-plugins
-        - udisks2
-        - unrar
-        - xdg-user-dirs
-        - xdg-utils
+      - hyprland
+      - hyprland-guiutils
+      - xdg-desktop-portal-hyprland
+      - qt5-qtwayland
+      - qt6-qtwayland
+      - grim
+      - slurp
+      - wev
+      - xwaylandvideobridge    # https://wiki.hypr.land/Useful-Utilities/Screen-Sharing/#xwayland
 
-  - from-file: ./hyprland-modules.yml
   - from-file: ./dms-modules.yml
   - from-file: ./desktop-modules.yml
+
+  - type: files
+    files:
+      - source: system
+        destination: /
+        
+  - type: systemd
+    system:
+      enabled:
+        - greetd
+    user:
+      enabled:
+        - dsearch
 
   - type: signing

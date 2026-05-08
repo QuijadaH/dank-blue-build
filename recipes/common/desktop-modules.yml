@@ -17,6 +17,16 @@ modules:
         - shared-mime-info 
         - tumbler
         - webp-pixbuf-loader
+        - dconf
+        - fastfetch
+        - glib2
+        - mediainfo
+        - p7zip
+        - p7zip-plugins
+        - udisks2
+        - unrar
+        - xdg-user-dirs
+        - xdg-utils
         
   - type: default-flatpaks
     configurations:
