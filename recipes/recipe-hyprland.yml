@@ -35,7 +35,7 @@ modules:
   - from-file: ./common/desktop-modules.yml
         
   - type: script
-    scripts:
+    snippets:
       - "chmod +x /etc/skel/.config/hypr/scripts/restart-portals.sh"
       - "chmod +x /usr/libexec/skel-init/skel-init"
 
