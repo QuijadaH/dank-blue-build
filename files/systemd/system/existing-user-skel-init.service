@@ -1,0 +1,11 @@
+[Unit]
+Description=Skel initialization for existing users (bootc-managed)
+After=systemd-user-sessions.service
+Before=greetd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/skel-init/skel-init
+
+[Install]
+WantedBy=multi-user.target

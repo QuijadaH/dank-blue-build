@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+IMAGE_FILE="/usr/lib/dank-blue-build/image"
+
+if [[ ! -f "$IMAGE_FILE" ]]; then
+    exit 0
+fi
+
+IMAGE_ID="$(tr -d '[:space:]' < "$IMAGE_FILE")"
+
+if ! bootc status | grep -Fq "$IMAGE_ID"; then
+    exit 0
+fi
+
+SKEL="/etc/skel"
+STAMP_REL=".local/state/dank-blue-build/skel-init-v1"
+
+# --- iterate real users ---
+awk -F: '$3 >= 1000 && $3 < 65534 { print $1 ":" $6 }' /etc/passwd |
+while IFS=: read -r user home; do
+    [[ -d "$home" ]] || continue
+
+    stamp="$home/$STAMP_REL"
+
+    # already initialized → skip
+    if [[ -f "$stamp" ]]; then
+        continue
+    fi
+
+    echo "Bootc skel init: $user"
+
+    # copy skel tree (excluding stamp itself)
+    find "$SKEL" -mindepth 1 -maxdepth 1 -print0 |
+    while IFS= read -r -d '' src; do
+        rel="${src#$SKEL/}"
+        dst="$home/$rel"
+
+        # skip stamp from overwrite logic
+        if [[ "$rel" == ".local/state/dank-blue-build/skel-init-v1" ]]; then
+            continue
+        fi
+
+        if [[ -e "$dst" ]]; then
+            ts=$(date +"%Y%m%d-%H%M%S")
+            mv "$dst" "${dst}.bak.${ts}"
+        fi
+
+        mkdir -p "$(dirname "$dst")"
+        cp -a "$src" "$dst"
+        chown -R "$user:$user" "$dst"
+    done
+
+    # ensure stamp exists in user home
+    mkdir -p "$(dirname "$stamp")"
+    cp -a "$SKEL/$STAMP_REL" "$stamp"
+    chown -R "$user:$user" "$(dirname "$stamp")"
+done

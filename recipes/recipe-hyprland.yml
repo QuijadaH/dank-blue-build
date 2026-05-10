@@ -24,7 +24,7 @@ modules:
       - grim
       - slurp
       - wev
-      - xwaylandvideobridge    # https://wiki.hypr.land/Useful-Utilities/Screen-Sharing/#xwayland
+      - xwaylandvideobridge    # See https://wiki.hypr.land/Useful-Utilities/Screen-Sharing/#xwayland
 
   - from-file: ./dms-modules.yml
   - from-file: ./desktop-modules.yml
@@ -38,8 +38,11 @@ modules:
     system:
       enabled:
         - greetd
+        - existing-user-skel-init.service
     user:
       enabled:
+        - hyprland-session.target
+        - dms
         - dsearch
 
   - type: signing
