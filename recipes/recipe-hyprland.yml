@@ -8,6 +8,11 @@ base-image: ghcr.io/blue-build/base-images/fedora-base
 image-version: 43
 
 modules:
+  - type: files
+    files:
+      - source: system
+        destination: /
+
   - type: dnf
     repos:
       copr:
@@ -26,13 +31,8 @@ modules:
       - wev
       - xwaylandvideobridge    # See https://wiki.hypr.land/Useful-Utilities/Screen-Sharing/#xwayland
 
-  - from-file: ./dms-modules.yml
-  - from-file: ./desktop-modules.yml
-
-  - type: files
-    files:
-      - source: system
-        destination: /
+  - from-file: ./common/dms-modules.yml
+  - from-file: ./common/desktop-modules.yml
         
   - type: systemd
     system:
