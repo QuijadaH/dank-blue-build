@@ -34,6 +34,11 @@ modules:
   - from-file: ./common/dms-modules.yml
   - from-file: ./common/desktop-modules.yml
         
+  - type: script
+    scripts:
+      - "chmod +x /etc/skel/.config/hypr/scripts/restart-portals.sh"
+      - "chmod +x /usr/libexec/skel-init/skel-init"
+
   - type: systemd
     system:
       enabled:
