@@ -15,32 +15,67 @@ fi
 
 SKEL="/etc/skel"
 STAMP_REL=".local/state/dank-blue-build/skel-init-v1"
+IGNORE_FILE="$SKEL/.skel-ignore"
 
-# --- iterate real users ---
+# -------------------------
+# Load skip list
+# -------------------------
+declare -a SKIP_LIST=()
+
+if [[ -f "$IGNORE_FILE" ]]; then
+    while IFS= read -r line; do
+        line="$(echo "$line" | xargs)"
+
+        # skip empty lines and comments
+        [[ -z "$line" || "$line" == \#* ]] && continue
+
+        SKIP_LIST+=("$line")
+    done < "$IGNORE_FILE"
+fi
+
+# -------------------------
+# Skip matching function
+# -------------------------
+should_skip() {
+    local rel="$1"
+
+    for pattern in "${SKIP_LIST[@]}"; do
+        if [[ "$rel" == "$pattern" || "$rel" == "$pattern/"* ]]; then
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+# -------------------------
+# Iterate users
+# -------------------------
 awk -F: '$3 >= 1000 && $3 < 65534 { print $1 ":" $6 }' /etc/passwd |
 while IFS=: read -r user home; do
     [[ -d "$home" ]] || continue
 
     stamp="$home/$STAMP_REL"
 
-    # already initialized → skip
+    # already initialized → skip user entirely
     if [[ -f "$stamp" ]]; then
         continue
     fi
 
     echo "Bootc skel init: $user"
 
-    # copy skel tree (excluding stamp itself)
+    # copy top-level skel entries
     find "$SKEL" -mindepth 1 -maxdepth 1 -print0 |
     while IFS= read -r -d '' src; do
         rel="${src#$SKEL/}"
         dst="$home/$rel"
 
-        # skip stamp from overwrite logic
-        if [[ "$rel" == ".local/state/dank-blue-build/skel-init-v1" ]]; then
+        # skip via declarative list
+        if should_skip "$rel"; then
             continue
         fi
 
+        # backup if exists
         if [[ -e "$dst" ]]; then
             ts=$(date +"%Y%m%d-%H%M%S")
             mv "$dst" "${dst}.bak.${ts}"
@@ -54,5 +89,5 @@ while IFS=: read -r user home; do
     # ensure stamp exists in user home
     mkdir -p "$(dirname "$stamp")"
     cp -a "$SKEL/$STAMP_REL" "$stamp"
-    chown -R "$user:$user" "$(dirname "$stamp")"
+    chown -R "$user:$user" "$home/.local/state/dank-blue-build"
 done
