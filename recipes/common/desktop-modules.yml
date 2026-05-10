@@ -2,29 +2,29 @@ modules:
   - type: dnf
     install:
       packages:
+        - dconf
         - desktop-file-utils
+        - fastfetch
         - file-roller
         - firewall-config
+        - glib2
         - gparted
         - gvfs
         - libgsf 
+        - mediainfo
         - nemo
         - nemo-extensions
         - nemo-fileroller
         - nemo-preview 
+        - p7zip
+        - p7zip-plugins
         - poppler-glib
         - samba-client
         - shared-mime-info 
         - tumbler
-        - webp-pixbuf-loader
-        - dconf
-        - fastfetch
-        - glib2
-        - mediainfo
-        - p7zip
-        - p7zip-plugins
         - udisks2
         - unrar
+        - webp-pixbuf-loader
         - xdg-user-dirs
         - xdg-utils
         
