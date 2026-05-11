@@ -48,7 +48,6 @@ modules:
       enabled:
         - hyprland-session.target
         - gnome-keyring-daemon.socket
-        - gnome-keyring-daemon-ssh.socket
         - dms
         - dsearch
 
