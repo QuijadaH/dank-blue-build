@@ -31,8 +31,8 @@ modules:
       - wev
       - xwaylandvideobridge    # See https://wiki.hypr.land/Useful-Utilities/Screen-Sharing/#xwayland
 
+  - from-file: ./common/dms-modules.yml
   - from-file: ./common/common-modules.yml
-  - from-file: ./common/desktop-modules.yml
         
   - type: script
     snippets:
