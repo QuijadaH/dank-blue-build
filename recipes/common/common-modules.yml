@@ -24,7 +24,8 @@ modules:
         - poppler-glib
         - samba-client
         - seahorse
-        - shared-mime-info 
+        - shared-mime-info
+        - trash-cli 
         - tumbler
         - udisks2
         - unrar
