@@ -8,9 +8,12 @@ modules:
         - file-roller
         - firewall-config
         - glib2
+        - gnome-keyring
+        - gnome-keyring-pam
         - gparted
         - gvfs
         - libgsf 
+        - libsecret
         - mediainfo
         - nemo
         - nemo-extensions
@@ -20,7 +23,9 @@ modules:
         - p7zip-plugins
         - poppler-glib
         - samba-client
-        - shared-mime-info 
+        - seahorse
+        - shared-mime-info
+        - trash-cli 
         - tumbler
         - udisks2
         - unrar
