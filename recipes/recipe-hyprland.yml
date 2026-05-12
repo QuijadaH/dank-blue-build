@@ -23,12 +23,15 @@ modules:
       packages:
       - hyprland
       - hyprland-guiutils
-      - xdg-desktop-portal-hyprland
+      - cmake
+      - gcc-c++
+      - grim
+      - pkgconf-pkg-config
       - qt5-qtwayland
       - qt6-qtwayland
-      - grim
       - slurp
       - wev
+      - xdg-desktop-portal-hyprland
       - xwaylandvideobridge    # See https://wiki.hypr.land/Useful-Utilities/Screen-Sharing/#xwayland
 
   - from-file: ./common/dms-modules.yml
