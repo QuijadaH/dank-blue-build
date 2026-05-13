@@ -40,13 +40,14 @@ modules:
   - type: script
     snippets:
       - "chmod +x /etc/skel/.config/hypr/scripts/restart-portals.sh"
-      - "chmod +x /usr/libexec/skel-init/skel-init"
+      - "chmod +x /etc/skel/.local/bin/desktop-setup.sh"
+      - "chmod +x /usr/libexec/dank-blue-build/skel-init"
 
   - type: systemd
     system:
       enabled:
         - greetd
-        - existing-user-skel-init.service
+        - skel-init.service
     user:
       enabled:
         - hyprland-session.target

@@ -30,6 +30,7 @@ modules:
         - udisks2
         - unrar
         - webp-pixbuf-loader
+        - xdg-terminal-exec
         - xdg-user-dirs
         - xdg-utils
         

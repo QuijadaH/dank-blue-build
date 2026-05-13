@@ -2,10 +2,11 @@
 Description=Skel initialization for existing users (bootc-managed)
 After=systemd-user-sessions.service
 Before=greetd.service
+ConditionPathExists=!/var/lib/dank-blue-build/skel-init-done
 
 [Service]
 Type=oneshot
-ExecStart=/usr/libexec/skel-init/skel-init
+ExecStart=/usr/libexec/dank-blue-build/skel-init
 
 [Install]
 WantedBy=multi-user.target
